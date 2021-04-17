@@ -44,19 +44,20 @@ namespace ReverseIt
         public int[] Scramble()
         {
             Random random = new Random();
-            for (int i = 0; i < 9; i++)
-            {
-                int offSet;
-                int tmpValue;
 
+            for (int index1 = 0; index1 < 9; index1++)
+            {
+                int index2;
                 do
                 {
-                    offSet = random.Next();
-                } while ((i + offSet) % 9 == 0);
+                    index2 = random.Next(0, 9);
+                } while (index1 == index2);
 
-                tmpValue = numbers[(i + offSet) % 9];
-                numbers[(i + offSet) % 9] = numbers[i];
-                numbers[i] = tmpValue;
+                int value1 = numbers[index1];
+                int value2 = numbers[index2];
+
+                numbers[index1] = value2;
+                numbers[index2] = value1;
             }
             return numbers;
         }
